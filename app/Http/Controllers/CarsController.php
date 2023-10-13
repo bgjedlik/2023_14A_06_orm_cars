@@ -1,8 +1,9 @@
 <?php
-
+// php artisan make:factory CarsFactory --model Car
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Car;
 
 class CarsController extends Controller
 {
@@ -11,7 +12,8 @@ class CarsController extends Controller
      */
     public function index()
     {
-        //
+        $cars = Car::all(); // select * from cars
+        dd($cars);
     }
 
     /**
