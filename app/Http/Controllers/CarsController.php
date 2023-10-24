@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Car;
+use App\Http\Requests\CarValidationRequest;
+
 
 class CarsController extends Controller
 {
@@ -13,7 +15,10 @@ class CarsController extends Controller
     public function index()
     {
         $cars = Car::all(); // select * from cars
-        dd($cars);
+        //dd($cars);
+        return view('cars.index',[
+            'cars' => $cars
+        ]);
     }
 
     /**
@@ -21,15 +26,23 @@ class CarsController extends Controller
      */
     public function create()
     {
-        //
+        return view('cars.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    // public function store(Request $request)
+    public function store(CarValidationRequest $request)
     {
-        //
+        $request->validated(); // ellenőrzés
+        // dd($request);
+        Car::create([
+            'name' => $request->input('name'),
+            'founded' => $request->input('founded'),
+            'description' => $request->input('description')
+        ]);
+        return redirect('/cars');
     }
 
     /**
@@ -45,7 +58,10 @@ class CarsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // dd($id);
+        $car = Car::find($id);
+        // dd($car);
+        return view('cars.update');
     }
 
     /**

@@ -1,0 +1,20 @@
+main {
+    min-height: 40vw;
+}
+
+.header-bg{
+    height: 100px;
+    background-color: lightblue ;
+}
+
+.founded {
+    text-transform: uppercase;
+    color: blue;
+    font-weight: bold;
+}
+.name {
+    color: gray;
+}
+.description {
+    color: darkgray;
+}

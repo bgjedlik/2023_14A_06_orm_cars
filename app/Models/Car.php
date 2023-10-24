@@ -12,8 +12,10 @@ class Car extends Model
     // tábla tulajdonság
     protected $table = 'cars'; // ha különbözik az osztály névtől
     protected $primaryKey = 'id';
+    protected $fillable = ['name','founded','description'];
 
     public $timestamps = true; // false nem használom
+
 
     //  php artisan make:controller CarsController --resource
 }
